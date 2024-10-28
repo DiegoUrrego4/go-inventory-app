@@ -1,9 +1,7 @@
-version: '3.8'
-
 services:
   postgres:
     image: postgres:15
-    container_name: my_postgres_db
+    container_name: inventory_app_db
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -13,11 +11,11 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
     networks:
-      - auth_app_network
+      - inventory_app_network
 
 volumes:
   db_data:
 
 networks:
-  auth_app_network:
+  inventory_app_network:
     driver: bridge
